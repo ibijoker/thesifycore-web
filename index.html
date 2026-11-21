@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thesify Core | MS/PhD Thesis, Research Collaboration, FYP &amp; Assignments</title>
+<meta name="description" content="MS/PhD thesis guidance, research collaboration, BS Final Year Projects (FYP), and assignment writing with a dedicated team led by Ibrahim Amin, AI Engineer.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318110d'/%3E%3Cpath d='M12 18h20v6h-7v24h-6V24h-7z' fill='%23edd09e'/%3E%3Cpath d='M32 22c6-4 14-4 20 0v26c-6-4-14-4-20 0z' fill='none' stroke='%23f8f5f0' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M32 48V24l-5 5m5-5 5 5' fill='none' stroke='%23d4a359' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: dark library at night. A WebGL book sits beside the headline, a scroll-driven thesis journey follows, then filterable service cards. Single dark theme by choice (brand is brown and gold). */
+  :root {
+    color-scheme: dark;
+    --bg: #140f0c;
+    --surface: #1e1612;
+    --card: rgba(38, 28, 23, 0.74);
+    --gold: #d4a359;
+    --gold-2: #edd09e;
+    --gold-3: #9d6f2b;
+    --ink: #f8f5f0;
+    --muted: #b8aea3;
+    --line: rgba(212, 163, 89, 0.22);
+    --wa: #25D366;
+    --fb: #1877F2;
+    --fb-h: #1565D8;
+    --li: #0A66C2;
+    --li-h: #084E96;
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--serif); text-wrap: balance; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap-inner { padding-inline: 8px; }
+
+  /* Ambient background */
+  .ambient {
+    position: fixed; inset: 0; z-index: -1; overflow: hidden;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(92, 62, 42, 0.28) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(212, 163, 89, 0.14) 0%, transparent 50%),
+      linear-gradient(180deg, #140f0c 0%, #1a130f 50%, #110c0a 100%);
+  }
+  .orb { position: absolute; border-radius: 50%; opacity: 0.85; animation: floatOrb 18s ease-in-out infinite alternate; }
+  .orb-1 { width: 560px; height: 560px; background: radial-gradient(circle, rgba(168, 118, 62, 0.28), transparent 68%); top: -160px; left: -140px; }
+  .orb-2 { width: 640px; height: 640px; background: radial-gradient(circle, rgba(140, 92, 54, 0.3), transparent 68%); bottom: 0; right: -200px; animation-delay: -6s; }
+  @keyframes floatOrb { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(42px,54px,0) scale(1.12); } }
+
+  /* Header */
+  .site {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: rgba(20, 15, 12, 0.72);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .site.scrolled { background: rgba(16, 12, 9, 0.94); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); }
+  .progress {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+    transform-origin: 0 50%; transform: scaleX(0);
+    background: linear-gradient(90deg, var(--gold-3), var(--gold-2), var(--gold));
+    box-shadow: 0 0 12px rgba(212, 163, 89, 0.55);
+  }
+  .nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 0.8rem; }
+  .brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; min-width: 0; }
+  .brand-logo {
+    flex: none; width: 44px; height: 44px; border-radius: 11px;
+    background: linear-gradient(135deg, #2b2019, #18110d);
+    border: 1px solid var(--gold); display: grid; place-items: center;
+    transition: transform 0.5s var(--ease), border-color 0.3s;
+  }
+  .brand:hover .brand-logo { transform: rotate(-6deg) scale(1.07); border-color: var(--gold-2); }
+  .brand-name { display: block; font-family: var(--serif); font-size: 1.28rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1.2; }
+  .brand-sub { display: block; font-size: 0.72rem; color: var(--gold-2); letter-spacing: 0.5px; opacity: 0.88; }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a:not(.btn) { position: relative; color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.25s; }
+  .nav-links a:not(.btn)::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1.5px; background: var(--gold); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.35s var(--ease); }
+  .nav-links a:not(.btn):hover, .nav-links a.current { color: var(--gold-2); }
+  .nav-links a:not(.btn):hover::after, .nav-links a.current::after { transform: scaleX(1); }
+  .menu-btn { display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line); background: rgba(212, 163, 89, 0.1); color: var(--gold-2); cursor: pointer; place-items: center; }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.3s var(--ease), opacity 0.2s; }
+  .menu-btn span { position: relative; }
+  .menu-btn span::before, .menu-btn span::after { content: ''; position: absolute; left: 0; }
+  .menu-btn span::before { top: -6px; }
+  .menu-btn span::after { top: 6px; }
+  .menu-btn[aria-expanded="true"] span { background: transparent; }
+  .menu-btn[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+    padding: 0.85rem 1.45rem; border-radius: 10px; border: 1px solid transparent;
+    font: 600 0.95rem/1.2 var(--sans); text-decoration: none; cursor: pointer;
+    transition: background-color 0.25s, box-shadow 0.3s, border-color 0.3s; will-change: transform;
+  }
+  .btn .arr { display: inline-block; transition: transform 0.35s var(--ease); }
+  .btn:hover .arr { transform: translateX(4px); }
+  .btn-wa { background: var(--wa); color: #0b1a10; }
+  .btn-wa:hover { box-shadow: 0 10px 26px rgba(37, 211, 102, 0.3); }
+  .btn-fb { background: var(--fb); color: #fff; }
+  .btn-fb:hover { background: var(--fb-h); box-shadow: 0 10px 26px rgba(24, 119, 242, 0.34); }
+  .btn-li { background: var(--li); color: #fff; }
+  .btn-li:hover { background: var(--li-h); box-shadow: 0 10px 26px rgba(10, 102, 194, 0.34); }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #b6843c); color: #140f0c; padding: 0.65rem 1.3rem; border-radius: 8px; }
+  .btn-gold:hover { box-shadow: 0 10px 26px rgba(212, 163, 89, 0.3); }
+  .btn-outline { border-color: var(--line); color: var(--ink); font-weight: 500; background: transparent; }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(212, 163, 89, 0.09); }
+
+  /* Hero */
+  .hero { padding-top: 8.5rem; padding-bottom: 4rem; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 3rem; align-items: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.55rem; max-width: 100%;
+    padding: 0.42rem 1rem; border-radius: 999px;
+    background: rgba(212, 163, 89, 0.12); border: 1px solid var(--line);
+    color: var(--gold-2); font-size: 0.82rem; font-weight: 500; margin-bottom: 1.4rem;
+  }
+  .badge i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulseDot 2.2s ease-in-out infinite; }
+  @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.5); } }
+  .hero h1 { font-size: clamp(2.5rem, 5.1vw, 4.4rem); line-height: 1.1; font-weight: 600; margin-bottom: 1.3rem; color: #fff; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: italic; color: var(--gold-2); }
+  .hero h1 em .wi { background: linear-gradient(120deg, #f7e3bd 0%, #d4a359 55%, #edd09e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-right: 0.04em; }
+  .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.06em 0.16em 0; margin: 0 -0.06em -0.16em 0; }
+  .wi { display: inline-block; will-change: transform; }
+  .hero-copy { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin-bottom: 2rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+
+  /* 3D book stage */
+  .book-stage {
+    position: relative; min-width: 0;
+    background: linear-gradient(145deg, rgba(44, 32, 25, 0.88), rgba(22, 16, 12, 0.96));
+    border: 1px solid var(--line); border-radius: 22px; padding: 1.1rem 1.1rem 1.2rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.58); user-select: none; -webkit-user-select: none;
+  }
+  .book-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .book-badge { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.9px; color: var(--gold-2); background: rgba(212, 163, 89, 0.12); border: 1px solid rgba(212, 163, 89, 0.24); padding: 0.28rem 0.7rem; border-radius: 999px; }
+  .book-count { font-size: 0.8rem; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .book-view {
+    position: relative; height: clamp(300px, 36vw, 420px); border-radius: 14px; overflow: hidden;
+    cursor: grab; touch-action: pan-y; outline: none;
+    background: radial-gradient(ellipse at 50% 55%, rgba(212, 163, 89, 0.13), transparent 62%);
+  }
+  .book-view:active { cursor: grabbing; }
+  .book-view:focus-visible { box-shadow: 0 0 0 2px var(--gold); }
+  .book-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .book-fallback { display: none; position: absolute; inset: 0; grid-template-columns: 1fr 1fr; gap: 2px; padding: 0.5rem; }
+  .no-webgl .book-fallback { display: grid; }
+  .fb-page { display: flex; flex-direction: column; justify-content: space-between; gap: 0.6rem; padding: 1rem; background: linear-gradient(160deg, #f6efe4, #ebdfcb); color: #211712; border-radius: 6px; min-width: 0; overflow: hidden; }
+  .fb-kicker { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #8f6224; }
+  .fb-page h4 { font-size: 1.05rem; color: #16100c; line-height: 1.25; margin: 0.3rem 0; }
+  .fb-page p { font-size: 0.8rem; color: #46362d; line-height: 1.5; }
+  .fb-hl { background: rgba(212, 163, 89, 0.2); border-left: 3px solid var(--gold-3); padding: 0.45rem 0.6rem; font-size: 0.74rem; font-weight: 600; color: #241812; word-break: break-word; }
+  .book-controls { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-top: 0.9rem; }
+  .book-btn { background: rgba(212, 163, 89, 0.15); color: var(--gold-2); border: 1px solid var(--line); padding: 0.5rem 0.95rem; border-radius: 8px; font: 600 0.82rem var(--sans); cursor: pointer; transition: background 0.25s, border-color 0.25s; }
+  .book-btn:hover { background: rgba(212, 163, 89, 0.28); border-color: var(--gold); }
+  .book-dots { display: flex; gap: 0.5rem; align-items: center; }
+  .book-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(237, 208, 158, 0.25); border: 0; cursor: pointer; transition: transform 0.3s var(--ease), background 0.25s; padding: 0; }
+  .book-dot.active { background: var(--gold-2); transform: scale(1.35); }
+  .book-hint { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 0.6rem; opacity: 0.85; }
+
+  /* Marquee */
+  .marquee { overflow: hidden; border-block: 1px solid var(--line); background: rgba(30, 22, 18, 0.5); padding: 1.05rem 0; }
+  .mq-track { display: flex; width: max-content; animation: mq 40s linear infinite; }
+  .mq-group { display: flex; align-items: center; gap: 2.2rem; padding-right: 2.2rem; }
+  .mq-group span { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.6rem); color: var(--muted); white-space: nowrap; }
+  .mq-group b { flex: none; width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
+  @keyframes mq { to { transform: translateX(-50%); } }
+
+  /* Sections */
+  .section { padding-block: 5.5rem; }
+  .eyebrow { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gold-2); margin-bottom: 0.7rem; display: block; }
+  .section-head { text-align: center; max-width: 760px; margin: 0 auto 2.5rem; }
+  .section-head h2, .journey h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); line-height: 1.15; margin-bottom: 0.8rem; }
+  .section-head p, .lede { color: var(--muted); }
+
+  /* Journey */
+  .journey { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 4rem; align-items: start; }
+  .journey h2 { text-align: left; }
+  .journey-side { position: sticky; top: 7rem; }
+  .ring { position: relative; width: 132px; height: 132px; margin-top: 2rem; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring circle { fill: none; stroke-width: 5; }
+  .ring-bg { stroke: rgba(212, 163, 89, 0.16); }
+  .ring-fg { stroke: var(--gold); stroke-linecap: round; transition: stroke-dashoffset 0.8s var(--ease); filter: drop-shadow(0 0 6px rgba(212, 163, 89, 0.55)); }
+  .ring-label { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; line-height: 1.1; }
+  .ring-label b { font-family: var(--serif); font-size: 2.1rem; color: var(--gold-2); font-variant-numeric: tabular-nums; }
+  .ring-label small { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.5px; }
+  .step-name { margin-top: 1rem; font-family: var(--serif); font-size: 1.35rem; color: #fff; min-height: 2rem; }
+  .steps { position: relative; list-style: none; display: grid; gap: 1.6rem; padding-left: 2.6rem; }
+  .steps::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: rgba(212, 163, 89, 0.16); border-radius: 2px; }
+  .steps-fill { position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--gold-2), var(--gold)); border-radius: 2px; transform-origin: 50% 0; transform: scaleY(0); box-shadow: 0 0 10px rgba(212, 163, 89, 0.6); }
+  .step { position: relative; padding: 1.35rem 1.5rem; border: 1px solid transparent; border-radius: 16px; opacity: 0.55; transition: opacity 0.5s var(--ease), background 0.5s, border-color 0.5s, transform 0.5s var(--ease); }
+  .step-dot { position: absolute; left: -2.6rem; top: 1.65rem; width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 2px solid rgba(212, 163, 89, 0.4); transition: background 0.4s, border-color 0.4s, box-shadow 0.4s, transform 0.5s var(--ease); }
+  .step h3 { font-size: 1.35rem; margin-bottom: 0.35rem; }
+  .step p { color: var(--muted); font-size: 0.95rem; }
+  .step.done { opacity: 0.8; }
+  .step.done .step-dot { background: var(--gold-3); border-color: var(--gold-3); }
+  .step.active { opacity: 1; background: var(--card); border-color: var(--line); }
+  .step.active .step-dot { background: var(--gold); border-color: var(--gold-2); box-shadow: 0 0 0 6px rgba(212, 163, 89, 0.18), 0 0 18px rgba(212, 163, 89, 0.6); transform: scale(1.1); }
+
+  /* Filters + cards */
+  .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-bottom: 2.5rem; }
+  .filter { background: rgba(30, 22, 18, 0.75); color: var(--muted); border: 1px solid var(--line); padding: 0.55rem 1.15rem; border-radius: 999px; font: 500 0.86rem var(--sans); cursor: pointer; transition: color 0.25s, border-color 0.25s, background 0.3s, box-shadow 0.3s; }
+  .filter:hover { color: var(--gold-2); border-color: var(--gold); }
+  .filter.active { background: linear-gradient(135deg, var(--gold), #b6843c); color: #140f0c; border-color: transparent; font-weight: 600; box-shadow: 0 8px 20px rgba(212, 163, 89, 0.25); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; }
+  .tilt { --mx: 50%; --my: 50%; position: relative; }
+  .tilt::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(320px circle at var(--mx) var(--my), rgba(237, 208, 158, 0.15), transparent 65%); opacity: 0; transition: opacity 0.3s; }
+  .tilt:hover::after { opacity: 1; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.85rem; overflow: hidden; cursor: pointer; min-width: 0; transition: border-color 0.3s, box-shadow 0.3s; }
+  .card.hidden-card { display: none; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.35s; }
+  .card:hover, .card.expanded { border-color: var(--gold); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+  .card:hover::before, .card.expanded::before { opacity: 1; }
+  .card-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.05rem; }
+  .num { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: rgba(212, 163, 89, 0.14); border: 1px solid rgba(212, 163, 89, 0.3); color: var(--gold-2); font-family: var(--serif); font-weight: 700; transition: transform 0.5s var(--ease), background 0.3s; }
+  .card:hover .num { transform: scale(1.1) rotate(-4deg); background: rgba(212, 163, 89, 0.25); }
+  .plus { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); position: relative; transition: transform 0.4s var(--ease), background 0.3s; }
+  .plus::before, .plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: var(--gold-2); transform: translate(-50%, -50%); }
+  .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .card.expanded .plus { transform: rotate(135deg); background: rgba(212, 163, 89, 0.18); }
+  .card h3 { font-size: 1.28rem; margin-bottom: 0.55rem; color: #fff; }
+  .card p { color: var(--muted); font-size: 0.93rem; }
+  .drawer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.5s var(--ease), opacity 0.35s, margin-top 0.4s; }
+  .card.expanded .drawer { grid-template-rows: 1fr; opacity: 1; margin-top: 1rem; }
+  .drawer > div { overflow: hidden; border-top: 1px solid rgba(212, 163, 89, 0.14); padding-top: 0.85rem; }
+  .points { list-style: none; display: grid; gap: 0.35rem; font-size: 0.84rem; color: var(--gold-2); margin-bottom: 0.85rem; }
+  .points li { display: flex; gap: 0.6rem; align-items: baseline; }
+  .points li::before { content: ''; flex: none; width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg) translateY(-1px); }
+  .drawer-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.83rem; font-weight: 600; color: var(--wa); text-decoration: none; }
+  .drawer-cta:hover { text-decoration: underline; }
+
+  /* Info */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.5rem; }
+  .info { padding: 1.8rem; border-radius: 16px; background: rgba(30, 22, 18, 0.65); border: 1px solid var(--line); overflow: hidden; min-width: 0; transition: border-color 0.3s; }
+  .info:hover { border-color: var(--gold); }
+  .info h3 { font-size: 1.25rem; margin-bottom: 0.55rem; }
+  .info p, .info a.row { color: var(--muted); font-size: 0.94rem; text-decoration: none; word-break: break-word; display: block; margin-bottom: 0.25rem; }
+  .info a.row:hover { color: var(--gold-2); }
+  .email-line { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; }
+  .email-text { color: var(--ink); font-size: 0.94rem; word-break: break-all; user-select: all; -webkit-user-select: all; }
+  .copy { background: rgba(212, 163, 89, 0.14); color: var(--gold-2); border: 1px solid var(--line); border-radius: 8px; padding: 0.25rem 0.7rem; font: 600 0.76rem var(--sans); cursor: pointer; transition: background 0.25s; }
+  .copy:hover { background: rgba(212, 163, 89, 0.28); }
+  .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.65rem; }
+  .pill { padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; color: #fff; transition: background-color 0.25s, transform 0.3s var(--ease); }
+  .pill:hover { transform: translateY(-2px); }
+  .pill-fb { background: var(--fb); } .pill-fb:hover { background: var(--fb-h); }
+  .pill-li { background: var(--li); } .pill-li:hover { background: var(--li-h); }
+  .maplink { display: inline-block; margin-top: 0.6rem; color: var(--gold-2); font-size: 0.86rem; font-weight: 600; text-decoration: none; }
+  .maplink:hover { text-decoration: underline; }
+
+  /* CTA */
+  .cta { position: relative; background: linear-gradient(135deg, #2a1e17 0%, #19120e 100%); border: 1px solid var(--line); border-radius: 24px; padding: 4rem 1.5rem; text-align: center; overflow: hidden; }
+  @property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+  .cta::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; background: conic-gradient(from var(--a), transparent 0 68%, var(--gold) 86%, transparent 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: spin 7s linear infinite; }
+  @keyframes spin { to { --a: 360deg; } }
+  .cta h2 { font-size: clamp(1.9rem, 3.3vw, 2.8rem); line-height: 1.15; margin-bottom: 0.95rem; position: relative; }
+  .cta > p { color: var(--muted); max-width: 660px; margin: 0 auto 2rem; position: relative; }
+  .cta-links { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding-block: 3rem; text-align: center; color: var(--muted); font-size: 0.9rem; }
+  .foot-links { margin-top: 0.85rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.35rem; }
+  .foot-links a { color: var(--gold-2); text-decoration: none; font-weight: 500; word-break: break-all; }
+  .foot-links a:hover { text-decoration: underline; }
+  .foot-meta { margin-top: 0.75rem; font-size: 0.82rem; opacity: 0.85; }
+
+  /* Cursor */
+  .cursor { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1.5px solid var(--gold-2); border-radius: 50%; pointer-events: none; z-index: 3000; opacity: 0; display: grid; place-items: center; transition: width 0.3s var(--ease), height 0.3s var(--ease), margin 0.3s var(--ease), background 0.3s, border-color 0.3s, opacity 0.3s; }
+  .cursor.big { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(212, 163, 89, 0.14); }
+  .cursor.label { width: 78px; height: 78px; margin: -39px 0 0 -39px; background: rgba(237, 208, 158, 0.94); border-color: transparent; }
+  .cursor span { font: 700 0.68rem var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: #140f0c; opacity: 0; transition: opacity 0.2s; }
+  .cursor.label span { opacity: 1; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { padding-top: 7.5rem; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-grid > div:first-child { text-align: center; }
+    .hero-copy { margin-inline: auto; }
+    .hero-actions { justify-content: center; }
+    .menu-btn { display: grid; }
+    .nav-links { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 0.5rem max(16px, env(safe-area-inset-right, 0px)) 1rem max(16px, env(safe-area-inset-left, 0px)); background: rgba(16, 12, 9, 0.97); border-bottom: 1px solid var(--line); display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a:not(.btn) { padding: 0.8rem 0.2rem; border-bottom: 1px solid rgba(212, 163, 89, 0.1); }
+    .nav-links a:not(.btn)::after { display: none; }
+    .nav-links .btn { margin-top: 0.8rem; }
+    .journey { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .journey-side { position: static; }
+    .ring { display: none; }
+    .step-name { display: none; }
+    .section { padding-block: 4rem; }
+  }
+  @media (max-width: 520px) {
+    .book-fallback { grid-template-columns: 1fr; }
+    .brand-sub { display: none; }
+    .book-btn { padding: 0.5rem 0.7rem; }
+    .step.active { transform: none; }
+  }
+  @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .orb, .badge i, .mq-track, .cta::before { animation: none !important; }
+    .step, .drawer, .ring-fg { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap">
+    <div class="nav">
+      <a href="#top" class="brand" aria-label="Thesify Core, back to top">
+        <span class="brand-logo" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 16H30V22H23V48H17V22H10V16Z" fill="#edd09e"/>
+            <path d="M32 21C38 17 47 17 53 21V48C47 44 38 44 32 48V21Z" stroke="#f8f5f0" stroke-width="3.2" stroke-linejoin="round"/>
+            <path d="M32 48V23L27 28M32 23L37 28" stroke="#d4a359" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>
+          <span class="brand-name">Thesify Core</span>
+          <small class="brand-sub">Ibrahim Amin • AI Engineer</small>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="#journey">Thesis Journey</a>
+        <a href="#collaboration">Thesis &amp; Research</a>
+        <a href="#details">Team &amp; Info</a>
+        <a href="https://www.facebook.com/profile.php?id=61596752276178" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.linkedin.com/in/ibrahim-amin-605811272" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20would%20like%20to%20discuss%20thesis,%20research,%20or%20academic%20work." target="_blank" rel="noopener noreferrer" class="btn btn-gold magnetic">Start Inquiry</a>
+      </nav>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap"><div class="wrap-inner">
+      <div class="hero-grid">
+        <div>
+          <div class="badge"><i></i>MS / PhD Thesis • Research Collaboration • Dedicated Team</div>
+          <h1 aria-label="Your Partner in Thesis Success &amp; Research Excellence"><span class="w"><span class="wi">Your</span></span> <span class="w"><span class="wi">Partner</span></span> <span class="w"><span class="wi">in</span></span> <em><span class="w"><span class="wi">Thesis</span></span> <span class="w"><span class="wi">Success</span></span></em> <span class="w"><span class="wi">&amp;</span></span> <span class="w"><span class="wi">Research</span></span> <span class="w"><span class="wi">Excellence</span></span></h1>
+          <p class="hero-copy">Supporting MS and PhD scholars with thesis structuring and research collaboration—backed by a dedicated team for making theses, research work, and academic projects—alongside BS FYP and assignment support.</p>
+          <div class="hero-actions">
+            <a class="btn btn-wa magnetic" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20would%20like%20to%20discuss%20my%20thesis%20or%20research%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span class="arr">→</span></a>
+            <a class="btn btn-fb magnetic" href="https://www.facebook.com/profile.php?id=61596752276178" target="_blank" rel="noopener noreferrer">Facebook Page</a>
+            <a class="btn btn-li magnetic" href="https://www.linkedin.com/in/ibrahim-amin-605811272" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="book-stage" id="bookStage">
+          <div class="book-top">
+            <span class="book-badge">Interactive Thesis Book</span>
+            <span class="book-count" id="bookCounter">Spread 1 / 3</span>
+          </div>
+          <div class="book-view" id="bookView" tabindex="0" role="group" aria-label="Interactive thesis and research book. Use the buttons, drag, tap, or arrow keys to turn pages." data-cursor="Drag">
+            <div class="book-fallback" id="bookFallback"></div>
+          </div>
+          <p class="sr-only" id="bookLive" aria-live="polite"></p>
+          <div class="book-controls">
+            <button type="button" class="book-btn" id="prevBtn">← Prev Page</button>
+            <div class="book-dots" id="bookDots"></div>
+            <button type="button" class="book-btn" id="nextBtn">Next Page →</button>
+          </div>
+          <p class="book-hint">Drag, tap the pages, use the buttons, or press ← / → to turn them</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-track" id="mqTrack">
+      <div class="mq-group"><span>MS Thesis</span><b></b><span>PhD Thesis</span><b></b><span>Joint Research</span><b></b><span>R&amp;D Prototyping</span><b></b><span>BS Final Year Project</span><b></b><span>Assignments</span><b></b></div>
+      <div class="mq-group"><span>MS Thesis</span><b></b><span>PhD Thesis</span><b></b><span>Joint Research</span><b></b><span>R&amp;D Prototyping</span><b></b><span>BS Final Year Project</span><b></b><span>Assignments</span><b></b></div>
+    </div>
+  </div>
+
+  <section class="section" id="journey">
+    <div class="wrap"><div class="wrap-inner">
+      <div class="journey">
+        <div class="journey-side" data-r>
+          <span class="eyebrow">Thesis journey</span>
+          <h2>From synopsis to defense</h2>
+          <p class="lede">The path a thesis takes with our dedicated team, one stage at a time. Scroll to move along it.</p>
+          <div class="ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"/></svg>
+            <div class="ring-label"><b id="stepNow">1</b><small>of 7</small></div>
+          </div>
+          <p class="step-name" id="stepName" aria-hidden="true">Synopsis</p>
+        </div>
+        <ol class="steps" id="steps">
+          <span class="steps-fill" id="stepsFill" aria-hidden="true"></span>
+          <li class="step" data-name="Synopsis"><span class="step-dot"></span><h3>Synopsis</h3><p>Shape the topic, research gap and objectives into a clear synopsis your department can approve.</p></li>
+          <li class="step" data-name="Literature review"><span class="step-dot"></span><h3>Literature review</h3><p>Map existing work, find what is missing and place your study inside the field.</p></li>
+          <li class="step" data-name="Methodology"><span class="step-dot"></span><h3>Methodology</h3><p>Design the approach, data collection and tools so the study can be repeated and defended.</p></li>
+          <li class="step" data-name="Analysis"><span class="step-dot"></span><h3>Analysis</h3><p>Run the analysis, check the results and turn them into findings that answer the research question.</p></li>
+          <li class="step" data-name="Chapter writing"><span class="step-dot"></span><h3>Chapter writing</h3><p>Draft each chapter in one consistent academic voice, from introduction to conclusion.</p></li>
+          <li class="step" data-name="Formatting &amp; citations"><span class="step-dot"></span><h3>Formatting &amp; citations</h3><p>Apply your university template and reference style, including APA, IEEE, MLA and Harvard.</p></li>
+          <li class="step" data-name="Feedback &amp; defense prep"><span class="step-dot"></span><h3>Feedback &amp; defense prep</h3><p>Align the draft with supervisor feedback and prepare slides and answers for the defense.</p></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="collaboration">
+    <div class="wrap"><div class="wrap-inner">
+      <div class="section-head" data-r>
+        <h2>Thesis, Research &amp; Collaboration Areas</h2>
+        <p>We have a dedicated team for making theses, research work, and academic deliverables—prioritizing MS/PhD and research tracks first, with BS support at the end.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter service areas" data-r>
+        <button type="button" class="filter active" data-filter="all">All Areas (7)</button>
+        <button type="button" class="filter" data-filter="thesis">MS/PhD Thesis</button>
+        <button type="button" class="filter" data-filter="research">Research &amp; R&amp;D</button>
+        <button type="button" class="filter" data-filter="bs">BS FYP &amp; Assignments</button>
+      </div>
+
+      <div class="grid" id="cardGrid">
+        <article class="card tilt" data-category="thesis" data-r data-d="0">
+          <div class="card-row"><div class="num">1</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>MS &amp; PhD Thesis Making &amp; Guidance</h3>
+          <p>Handled by a dedicated team for making theses—covering synopsis, literature review, methodology, analysis, chapter writing, and formatting.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Dedicated team for thesis drafting &amp; structuring</li><li>Supervisor feedback alignment &amp; defense prep</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20need%20support%20with%20my%20MS%20or%20PhD%20thesis." target="_blank" rel="noopener noreferrer">Inquire about MS/PhD Thesis →</a>
+          </div></div>
+        </article>
+
+
+        <article class="card tilt" data-category="research" data-r data-d="0.12">
+          <div class="card-row"><div class="num">2</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>Joint Research Projects</h3>
+          <p>Multidisciplinary research initiatives with universities, research institutes, and international scholars.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Cross-disciplinary problem formulation</li><li>Collaborative milestones &amp; experimental design</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20want%20to%20discuss%20a%20joint%20research%20project." target="_blank" rel="noopener noreferrer">Discuss Joint Project →</a>
+          </div></div>
+        </article>
+
+        <article class="card tilt" data-category="research" data-r data-d="0">
+          <div class="card-row"><div class="num">3</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>Researcher Collaboration</h3>
+          <p>Co-research, methodology alignment, technical modeling, and cross-domain academic partnerships.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Data &amp; AI/ML modeling collaboration</li><li>Shared literature &amp; methodology workflows</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20am%20looking%20for%20researcher%20collaboration." target="_blank" rel="noopener noreferrer">Collaborate as Researcher →</a>
+          </div></div>
+        </article>
+
+
+        <article class="card tilt" data-category="research" data-r data-d="0.12">
+          <div class="card-row"><div class="num">4</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>Industry R&amp;D &amp; Prototyping</h3>
+          <p>Applied research, AI/data workflows, proof-of-concept prototypes, and practical problem-solving.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Applied AI &amp; analytical prototypes</li><li>Technical reports &amp; workflow automation</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20would%20like%20to%20discuss%20R%26D%20or%20prototyping." target="_blank" rel="noopener noreferrer">Discuss R&amp;D →</a>
+          </div></div>
+        </article>
+
+        <article class="card tilt" data-category="thesis" data-r data-d="0">
+          <div class="card-row"><div class="num">5</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>International Collaboration</h3>
+          <p>Cross-border academic exchange, remote research supervision support, and institutional partnerships.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Global scholar &amp; faculty remote coordination</li><li>Cross-institutional academic initiatives</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20am%20interested%20in%20international%20academic%20collaboration." target="_blank" rel="noopener noreferrer">Connect Globally →</a>
+          </div></div>
+        </article>
+
+        <article class="card tilt" data-category="bs" data-r data-d="0.06">
+          <div class="card-row"><div class="num">6</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>BS Final Year Project (FYP)</h3>
+          <p>BS FYP mentorship covering topic selection, proposal, system/research design, documentation, and defense preparation.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Proposal, methodology &amp; architecture guidance</li><li>Documentation, slides &amp; defense prep</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20need%20support%20with%20my%20BS%20Final%20Year%20Project%20(FYP)." target="_blank" rel="noopener noreferrer">Inquire about BS FYP →</a>
+          </div></div>
+        </article>
+
+        <article class="card tilt" data-category="bs" data-r data-d="0.12">
+          <div class="card-row"><div class="num">7</div><span class="plus" aria-hidden="true"></span></div>
+          <h3>BS Assignment Writing</h3>
+          <p>Structured BS assignments, essays, case studies, and technical reports formatted to course rubrics and citation styles.</p>
+          <div class="drawer"><div>
+            <ul class="points"><li>Structured academic &amp; technical writing</li><li>APA, IEEE, MLA &amp; Harvard formatting</li></ul>
+            <a class="drawer-cta" href="https://wa.me/923033350111?text=Hello%20Thesify%20Core,%20I%20would%20like%20help%20with%20a%20BS%20assignment." target="_blank" rel="noopener noreferrer">Inquire about BS Assignments →</a>
+          </div></div>
+        </article>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="details">
+    <div class="wrap"><div class="wrap-inner">
+      <div class="section-head" data-r>
+        <h2>Dedicated Team &amp; Contact Information</h2>
+        <p>We have a dedicated team for making theses, research work, and academic deliverables—led by Ibrahim Amin.</p>
+      </div>
+      <div class="info-grid">
+        <div class="info tilt" data-r data-d="0">
+          <span class="eyebrow">Principal Lead &amp; Team</span>
+          <h3>Ibrahim Amin</h3>
+          <p>AI Engineer • Leading a dedicated team for making theses, research projects, and academic work at Thesify Core.</p>
+        </div>
+        <div class="info tilt" data-r data-d="0.08">
+          <span class="eyebrow">Email &amp; Phone</span>
+          <h3>Direct Channels</h3>
+          <div class="email-line"><span class="email-text" id="emailText">ibrahimaminfacebook@gmail.com</span><button type="button" class="copy" id="copyEmail">Copy</button></div>
+          <a class="row" href="https://wa.me/923033350111" target="_blank" rel="noopener noreferrer">+92 3033350111</a>
+        </div>
+        <div class="info tilt" data-r data-d="0.16">
+          <span class="eyebrow">Social &amp; Profiles</span>
+          <h3>Facebook &amp; LinkedIn</h3>
+          <div class="pills">
+            <a class="pill pill-fb" href="https://www.facebook.com/profile.php?id=61596752276178" target="_blank" rel="noopener noreferrer">Facebook Page</a>
+            <a class="pill pill-li" href="https://www.linkedin.com/in/ibrahim-amin-605811272" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+          </div>
+        </div>
+        <div class="info tilt" data-r data-d="0.24">
+          <span class="eyebrow">Office Address</span>
+          <h3>Thesify Core</h3>
+          <p>Bashir Mall, Floor No. 3, Shop 12, Shahi Road, Rahim Yar Khan, Pakistan</p>
+          <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Bashir%20Mall%20Shahi%20Road%20Rahim%20Yar%20Khan%20Pakistan" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap"><div class="wrap-inner">
+      <div class="cta" data-r>
+        <h2>Start Your Thesis, Research, or Academic Inquiry</h2>
+        <p>We have a dedicated team for making theses and supporting research work. Share your MS/PhD thesis, research collaboration, or BS FYP/assignment details to get started.</p>
+        <div class="cta-links">
+          <a class="btn btn-wa magnetic" href="https://wa.me/923033350111?text=Hello%20Ibrahim,%20I%20would%20like%20to%20discuss%20thesis,%20research,%20or%20academic%20work%20with%20your%20team%20at%20Thesify%20Core." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span class="arr">→</span></a>
+          <a class="btn btn-fb magnetic" href="https://www.facebook.com/profile.php?id=61596752276178" target="_blank" rel="noopener noreferrer">Facebook Page</a>
+          <a class="btn btn-li magnetic" href="https://www.linkedin.com/in/ibrahim-amin-605811272" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-outline magnetic" href="mailto:ibrahimaminfacebook@gmail.com?subject=Thesis%20%2F%20Research%20Inquiry%20%E2%80%94%20Thesify%20Core">Email: ibrahimaminfacebook@gmail.com</a>
+        </div>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><div class="wrap-inner">
+    <p>&copy; 2026 <strong>Thesify Core</strong> (<code>thesifycore.com</code>) • Dedicated Thesis &amp; Research Team led by <strong>Ibrahim Amin, AI Engineer</strong>. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="mailto:ibrahimaminfacebook@gmail.com">ibrahimaminfacebook@gmail.com</a>
+      <a href="https://wa.me/923033350111" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="https://www.facebook.com/profile.php?id=61596752276178" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.linkedin.com/in/ibrahim-amin-605811272" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+    <p class="foot-meta">Bashir Mall, Floor No. 3, Shop 12, Shahi Road, Rahim Yar Khan, Pakistan</p>
+  </div></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var G = window.gsap, ST = window.ScrollTrigger, FL = window.Flip;
+  var hasG = !!G;
+  var hasST = !!(G && ST);
+  if (hasST) { G.registerPlugin(ST); }
+  if (G && FL) { G.registerPlugin(FL); }
+  function safe(fn, name) { try { fn(); } catch (e) { if (window.console) { console.warn('Thesify ' + name, e); } } }
+
+  var lenis = null;
+
+  /* Scroll state: header, progress bar, journey line */
+  safe(function () {
+    var header = $('#siteHeader'), bar = $('#progress'), fill = $('#stepsFill'), steps = $('#steps'), tick = false;
+    function update() {
+      tick = false;
+      var y = window.pageYOffset || 0;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? clamp(y / max, 0, 1) : 0) + ')';
+      header.classList.toggle('scrolled', y > 24);
+      if (steps && fill) {
+        var r = steps.getBoundingClientRect();
+        fill.style.transform = 'scaleY(' + clamp((window.innerHeight * 0.62 - r.top) / r.height, 0, 1) + ')';
+      }
+    }
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }, 'scroll');
+
+  /* Smooth scroll */
+  safe(function () {
+    if (reduce || !window.Lenis) { return; }
+    lenis = new window.Lenis({ lerp: 0.14, smoothWheel: true });
+    if (hasST) {
+      lenis.on('scroll', ST.update);
+      G.ticker.add(function (t) { lenis.raf(t * 1000); });
+      G.ticker.lagSmoothing(0);
+    } else {
+      var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    }
+  }, 'lenis');
+
+  /* Anchors + mobile menu */
+  safe(function () {
+    var menuBtn = $('#menuBtn'), links = $('#navLinks');
+    function closeMenu() { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.setAttribute('aria-label', 'Open menu'); }
+    menuBtn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    $$('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        var target = id === '#top' ? null : $(id);
+        if (id !== '#top' && !target) { return; }
+        e.preventDefault();
+        closeMenu();
+        if (lenis) { lenis.scrollTo(target || 0, { offset: -70, duration: 1.4 }); }
+        else if (target) { target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
+        else { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }
+      });
+    });
+    var secs = ['journey', 'collaboration', 'details'].map(function (id) { return $('#' + id); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          $$('.nav-links a[href^="#"]').forEach(function (a) { a.classList.toggle('current', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(function (s) { if (s) { io.observe(s); } });
+  }, 'nav');
+
+  /* Hero intro */
+  safe(function () {
+    if (!hasG || reduce) { return; }
+    var tl = G.timeline({ defaults: { ease: 'expo.out' } });
+    tl.from('#siteHeader', { yPercent: -100, duration: 0.9 }, 0)
+      .from('.badge', { y: 20, opacity: 0, duration: 0.9 }, 0.1)
+      .from('.hero h1 .wi', { yPercent: 115, duration: 0.85, stagger: 0.04 }, 0.2)
+      .from('.hero-copy', { y: 24, opacity: 0, duration: 1 }, 0.7)
+      .from('.hero-actions .btn', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.85)
+      .from('.book-stage', { y: 50, opacity: 0, duration: 0.9 }, 0.25);
+  }, 'intro');
+
+  /* Scroll reveals */
+  safe(function () {
+    if (!hasST || reduce) { return; }
+    $$('[data-r]').forEach(function (el) {
+      var d = parseFloat(el.getAttribute('data-d') || '0');
+      G.from(el, { y: 38, opacity: 0, duration: 0.85, delay: d, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+    });
+  }, 'reveal');
+
+  /* Magnetic buttons */
+  safe(function () {
+    if (!hasG || !fine || reduce) { return; }
+    $$('.magnetic').forEach(function (el) {
+      var xt = G.quickTo(el, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+      var yt = G.quickTo(el, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        xt((e.clientX - (r.left + r.width / 2)) * 0.28);
+        yt((e.clientY - (r.top + r.height / 2)) * 0.4);
+      });
+      el.addEventListener('pointerleave', function () { xt(0); yt(0); });
+    });
+  }, 'magnetic');
+
+  /* Cursor */
+  safe(function () {
+    if (!hasG || !fine || reduce) { return; }
+    var c = $('#cursor'), label = $('span', c), shown = false;
+    var xt = G.quickTo(c, 'x', { duration: 0.35, ease: 'power3' });
+    var yt = G.quickTo(c, 'y', { duration: 0.35, ease: 'power3' });
+    window.addEventListener('pointermove', function (e) {
+      if (!shown) { shown = true; c.style.opacity = '1'; G.set(c, { x: e.clientX, y: e.clientY }); }
+      xt(e.clientX); yt(e.clientY);
+    }, { passive: true });
+    document.addEventListener('pointerover', function (e) {
+      var t = e.target.closest ? e.target.closest('a, button, [data-cursor], .card') : null;
+      var txt = t && t.getAttribute('data-cursor');
+      label.textContent = txt || '';
+      c.classList.toggle('label', !!txt);
+      c.classList.toggle('big', !!t && !txt);
+    });
+    document.addEventListener('pointerleave', function () { c.style.opacity = '0'; shown = false; });
+  }, 'cursor');
+
+  /* Marquee reacts to scroll speed */
+  safe(function () {
+    var track = $('#mqTrack');
+    if (!track || !hasG || reduce) { return; }
+    track.style.animation = 'none';
+    var tw = G.to(track, { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
+    var target = 1, ts = 1, lastY = window.pageYOffset || 0;
+    window.addEventListener('scroll', function () {
+      var y = window.pageYOffset || 0;
+      target = 1 + Math.min(Math.abs(y - lastY) * 0.18, 6);
+      lastY = y;
+    }, { passive: true });
+    G.ticker.add(function () {
+      target += (1 - target) * 0.04;
+      ts += (target - ts) * 0.08;
+      tw.timeScale(ts);
+    });
+  }, 'marquee');
+
+  /* Thesis journey: active step and progress ring */
+  safe(function () {
+    var list = $$('.step');
+    if (!list.length) { return; }
+    var now = $('#stepNow'), name = $('#stepName'), ring = $('#ringFg');
+    var C = 2 * Math.PI * 52;
+    ring.style.strokeDasharray = String(C);
+    function set(i) {
+      list.forEach(function (s, k) { s.classList.toggle('active', k === i); s.classList.toggle('done', k < i); });
+      now.textContent = String(i + 1);
+      name.textContent = list[i].getAttribute('data-name');
+      ring.style.strokeDashoffset = String(C * (1 - (i + 1) / list.length));
+    }
+    set(0);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { set(list.indexOf(en.target)); } });
+    }, { rootMargin: '-42% 0px -50% 0px' });
+    list.forEach(function (s) { io.observe(s); });
+  }, 'journey');
+
+  /* Cards: spotlight, tilt, expand, filter */
+  safe(function () {
+    $$('.tilt').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        if (e.pointerType && e.pointerType !== 'mouse') { return; }
+        var r = el.getBoundingClientRect();
+        var xr = (e.clientX - r.left) / r.width, yr = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--mx', (xr * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (yr * 100).toFixed(1) + '%');
+        if (hasG && !reduce) {
+          G.to(el, { rotationY: (xr - 0.5) * 8, rotationX: -(yr - 0.5) * 6, transformPerspective: 900, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
+        }
+      });
+      el.addEventListener('pointerleave', function () {
+        if (hasG && !reduce) { G.to(el, { rotationX: 0, rotationY: 0, duration: 0.7, ease: 'power3.out', overwrite: 'auto' }); }
+      });
+    });
+
+    var refreshLater = function () { if (hasST) { setTimeout(function () { ST.refresh(); }, 560); } };
+    $$('.card').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) { return; }
+        card.classList.toggle('expanded');
+        refreshLater();
+      });
+    });
+
+    var fbtns = $$('.filter'), cards = $$('.card'), prepared = false, token = 0;
+    function matches(c, sel) { return sel === 'all' || c.getAttribute('data-category') === sel; }
+    fbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        fbtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var sel = btn.getAttribute('data-filter'), my = ++token;
+        cards.forEach(function (c) { c.classList.remove('expanded'); });
+        if (!hasG || reduce) {
+          cards.forEach(function (c) { c.classList.toggle('hidden-card', !matches(c, sel)); });
+          if (hasST) { ST.refresh(); }
+          return;
+        }
+        if (!prepared) {
+          prepared = true;
+          if (hasST) { ST.getAll().forEach(function (t) { if (cards.indexOf(t.trigger) > -1) { t.kill(false); } }); }
+        }
+        G.killTweensOf(cards);
+        G.set(cards, { clearProps: 'opacity,transform' });
+        var out = cards.filter(function (c) { return !c.classList.contains('hidden-card'); });
+        var show = cards.filter(function (c) { return matches(c, sel); });
+        function enter() {
+          if (my !== token) { return; }
+          cards.forEach(function (c) { c.classList.toggle('hidden-card', !matches(c, sel)); });
+          G.fromTo(show, { opacity: 0, y: 26, scale: 0.96 }, {
+            opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.05, ease: 'power3.out',
+            clearProps: 'opacity,transform',
+            onComplete: function () { if (hasST && my === token) { ST.refresh(); } }
+          });
+        }
+        if (out.length) { G.to(out, { opacity: 0, y: 14, scale: 0.96, duration: 0.2, ease: 'power2.in', onComplete: enter }); }
+        else { enter(); }
+      });
+    });
+  }, 'cards');
+
+  /* Copy email */
+  safe(function () {
+    var btn = $('#copyEmail'), txt = $('#emailText');
+    btn.addEventListener('click', function () {
+      function fallback() {
+        var rng = document.createRange(); rng.selectNodeContents(txt);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rng);
+        btn.textContent = 'Selected';
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt.textContent).then(function () { btn.textContent = 'Copied'; }, fallback);
+      } else { fallback(); }
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+    });
+  }, 'copy');
+
+  /* Interactive 3D book (Three.js) */
+  safe(function () {
+    var view = $('#bookView');
+    if (!view) { return; }
+    var stage = $('#bookStage');
+    var SP = [
+      { left: { kicker: 'Chapter I • MS & PhD', title: 'Thesis & Research Core', body: 'Structured thesis making, research gaps, methodology, and chapter writing.', highlight: 'Dedicated team for making theses', num: 'Page 01' },
+        right: { kicker: 'Chapter II • Leadership', title: 'Ibrahim Amin', body: 'AI Engineer guiding research workflows and collaborative academic projects.', highlight: 'Global & multidisciplinary focus', num: 'Page 02' } },
+      { left: { kicker: 'Chapter III • Research', title: 'Joint Research Projects', body: 'Joint research projects, researcher collaboration, and industry R&D prototyping.', highlight: 'Milestone-driven execution', num: 'Page 03' },
+        right: { kicker: 'Chapter IV • Undergrad Track', title: 'BS FYP & Assignments', body: 'Supporting BS Final Year Projects and structured assignments at the end of our track.', highlight: 'Proposal to defense & rubrics', num: 'Page 04' } },
+      { left: { kicker: 'Chapter V • Direct Desk', title: 'Connect With Our Team', body: 'Reach out on WhatsApp, Facebook, LinkedIn, or email with your project scope.', highlight: 'ibrahimaminfacebook@gmail.com', num: 'Page 05' },
+        right: { kicker: 'Chapter VI • Location', title: 'Thesify Core Office', body: 'Bashir Mall, Floor No. 3, Shop 12, Shahi Road, Rahim Yar Khan, Pakistan.', highlight: 'Ready for your inquiry', num: 'Page 06' } }
+    ];
+    var last = SP.length - 1, cur = 0, busy = false, interacted = false, api = null;
+    var counter = $('#bookCounter'), dotsEl = $('#bookDots'), live = $('#bookLive'), fb = $('#bookFallback');
+
+    SP.forEach(function (_, i) {
+      var d = document.createElement('button');
+      d.type = 'button'; d.className = 'book-dot';
+      d.setAttribute('aria-label', 'Go to spread ' + (i + 1));
+      d.addEventListener('click', function () { interacted = true; goTo(i); });
+      dotsEl.appendChild(d);
+    });
+
+    function fbRender() {
+      fb.innerHTML = '';
+      ['left', 'right'].forEach(function (k) {
+        var d = SP[cur][k], p = document.createElement('div');
+        p.className = 'fb-page';
+        var top = document.createElement('div');
+        var kk = document.createElement('div'); kk.className = 'fb-kicker'; kk.textContent = d.kicker;
+        var h = document.createElement('h4'); h.textContent = d.title;
+        var pp = document.createElement('p'); pp.textContent = d.body;
+        top.appendChild(kk); top.appendChild(h); top.appendChild(pp);
+        var hl = document.createElement('div'); hl.className = 'fb-hl'; hl.textContent = d.highlight;
+        p.appendChild(top); p.appendChild(hl); fb.appendChild(p);
+      });
+    }
+
+    function ui() {
+      counter.textContent = 'Spread ' + (cur + 1) + ' / ' + SP.length;
+      $$('.book-dot', dotsEl).forEach(function (d, i) { d.classList.toggle('active', i === cur); if (i === cur) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); } });
+      var s = SP[cur];
+      live.textContent = s.left.title + '. ' + s.left.body + ' ' + s.right.title + '. ' + s.right.body;
+      if (!api) { fbRender(); }
+    }
+
+    function tween(ms, fn, done) {
+      var s = performance.now();
+      (function f(now) {
+        var k = clamp((now - s) / ms, 0, 1);
+        fn(k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+        if (k < 1) { requestAnimationFrame(f); } else if (done) { done(); }
+      })(s);
+    }
+
+    function goTo(t) {
+      if (busy || t === cur || t < 0 || t > last) { return; }
+      busy = true;
+      (function step() {
+        if (cur === t) { busy = false; return; }
+        var dir = t > cur ? 1 : -1, leaf = dir > 0 ? cur : cur - 1;
+        cur += dir;
+        ui();
+        if (api && !reduce) {
+          var multi = Math.abs(t - cur) > 0;
+          var from = dir > 0 ? 0 : 1, to = dir > 0 ? 1 : 0;
+          tween(multi ? 460 : 800, function (e) { api.setLeaf(leaf, from + (to - from) * e); }, step);
+        } else {
+          if (api) { api.setLeaf(leaf, dir > 0 ? 1 : 0); }
+          step();
+        }
+      })();
+    }
+    function next() { goTo(cur === last ? 0 : cur + 1); }
+    function prev() { goTo(cur === 0 ? last : cur - 1); }
+
+    $('#nextBtn').addEventListener('click', function () { interacted = true; next(); });
+    $('#prevBtn').addEventListener('click', function () { interacted = true; prev(); });
+    view.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { interacted = true; next(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { interacted = true; prev(); e.preventDefault(); }
+    });
+
+    var sx = 0, sy = 0, sdown = false, tx = 0, ty = 0;
+    view.addEventListener('pointerdown', function (e) { interacted = true; sdown = true; sx = e.clientX; sy = e.clientY; });
+    view.addEventListener('pointercancel', function () { sdown = false; });
+    view.addEventListener('pointerup', function (e) {
+      if (!sdown) { return; }
+      sdown = false;
+      var dx = e.clientX - sx;
+      if (Math.abs(dx) > 40) { if (dx < 0) { next(); } else { prev(); } }
+      else if (Math.abs(dx) < 8 && Math.abs(e.clientY - sy) < 8) {
+        var r = view.getBoundingClientRect();
+        if (e.clientX - r.left > r.width / 2) { next(); } else { prev(); }
+      }
+    });
+    view.addEventListener('pointermove', function (e) {
+      var r = view.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width - 0.5;
+      ty = (e.clientY - r.top) / r.height - 0.5;
+    });
+    view.addEventListener('pointerleave', function () { tx = 0; ty = 0; });
+
+    function build3D() {
+      var T = window.THREE;
+      if (!T) { return null; }
+      var renderer;
+      try { renderer = new T.WebGLRenderer({ antialias: true, alpha: true }); } catch (err) { return null; }
+      if (!renderer.getContext || !renderer.getContext()) { return null; }
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.outputEncoding = T.sRGBEncoding;
+      renderer.setClearColor(0x000000, 0);
+      renderer.domElement.setAttribute('aria-hidden', 'true');
+      view.appendChild(renderer.domElement);
+
+      var scene = new T.Scene();
+      var camera = new T.PerspectiveCamera(32, 1, 0.1, 60);
+      scene.add(new T.AmbientLight(0xffffff, 0.85));
+      var dl = new T.DirectionalLight(0xffe3b8, 0.9); dl.position.set(2.5, 3, 4); scene.add(dl);
+
+      var W = 1.5, H = 2.1, N = 22;
+      var maxA = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
+      var texList = [];
+      var dirty = true;
+
+      function wrapText(x, text, px, py, maxW, lh) {
+        var words = text.split(' '), line = '', y = py;
+        for (var i = 0; i < words.length; i++) {
+          var test = line ? line + ' ' + words[i] : words[i];
+          if (x.measureText(test).width > maxW && line) { x.fillText(line, px, y); line = words[i]; y += lh; }
+          else { line = test; }
+        }
+        if (line) { x.fillText(line, px, y); y += lh; }
+        return y;
+      }
+      function drawPage(x, d, side) {
+        var PW = 640, PH = 896, P = 58, g = x.createLinearGradient(0, 0, PW, PH);
+        g.addColorStop(0, '#f6efe4'); g.addColorStop(1, '#ebdfcb');
+        x.fillStyle = g; x.fillRect(0, 0, PW, PH);
+        var sg = side === 'left' ? x.createLinearGradient(PW, 0, PW - 130, 0) : x.createLinearGradient(0, 0, 130, 0);
+        sg.addColorStop(0, 'rgba(60,40,20,0.30)'); sg.addColorStop(1, 'rgba(60,40,20,0)');
+        x.fillStyle = sg; x.fillRect(0, 0, PW, PH);
+        x.textBaseline = 'alphabetic';
+        x.fillStyle = '#b98a46'; x.fillRect(P, P + 6, 56, 3);
+        x.font = '700 21px "Plus Jakarta Sans", system-ui, sans-serif';
+        if ('letterSpacing' in x) { x.letterSpacing = '3px'; }
+        x.fillStyle = '#8f6224'; x.fillText(d.kicker.toUpperCase(), P, P + 54);
+        if ('letterSpacing' in x) { x.letterSpacing = '0px'; }
+        x.font = '600 50px "Playfair Display", Georgia, serif'; x.fillStyle = '#16100c';
+        var y = wrapText(x, d.title, P, P + 130, PW - 2 * P, 60);
+        x.font = '400 27px "Plus Jakarta Sans", system-ui, sans-serif'; x.fillStyle = '#46362d';
+        wrapText(x, d.body, P, y + 22, PW - 2 * P, 40);
+        var hy = PH - 190;
+        x.fillStyle = 'rgba(212,163,89,0.22)'; x.fillRect(P, hy, PW - 2 * P, 80);
+        x.fillStyle = '#9d6f2b'; x.fillRect(P, hy, 6, 80);
+        x.font = '700 24px "Plus Jakarta Sans", system-ui, sans-serif'; x.fillStyle = '#241812';
+        wrapText(x, d.highlight, P + 26, hy + 36, PW - 2 * P - 44, 30);
+        x.font = '600 20px "Plus Jakarta Sans", system-ui, sans-serif'; x.fillStyle = '#6f5c4f';
+        var w = x.measureText(d.num).width;
+        x.fillText(d.num, side === 'left' ? P : PW - P - w, PH - 58);
+      }
+      function pageTex(d, side, mirror) {
+        var c = document.createElement('canvas'); c.width = 640; c.height = 896;
+        var x = c.getContext('2d'); drawPage(x, d, side);
+        var tex = new T.CanvasTexture(c);
+        tex.anisotropy = maxA; tex.encoding = T.sRGBEncoding;
+        if (mirror) { tex.wrapS = T.RepeatWrapping; tex.repeat.x = -1; tex.offset.x = 1; }
+        texList.push({ x: x, d: d, side: side, tex: tex });
+        return tex;
+      }
+      function redraw() {
+        texList.forEach(function (t) { drawPage(t.x, t.d, t.side); t.tex.needsUpdate = true; });
+        dirty = true;
+      }
+
+      var rig = new T.Group(); scene.add(rig);
+      rig.rotation.x = -0.55;
+
+      /* Covers, spine, page blocks */
+      var leather = new T.MeshLambertMaterial({ color: 0x2f2016 });
+      var cream = new T.MeshLambertMaterial({ color: 0xe9dcc3 });
+      var goldLine = new T.LineBasicMaterial({ color: 0xd4a359 });
+      function box(w, h, d, mat, x, y, z) {
+        var m = new T.Mesh(new T.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); rig.add(m); return m;
+      }
+      var cw = W + 0.1, cx = (W + 0.1) / 2 - 0.02;
+      var lc = box(cw, H + 0.14, 0.06, leather, -cx, 0, -0.06);
+      var rc = box(cw, H + 0.14, 0.06, leather, cx, 0, -0.06);
+      [lc, rc].forEach(function (m) {
+        var e = new T.LineSegments(new T.EdgesGeometry(m.geometry), goldLine); m.add(e);
+      });
+      box(0.1, H + 0.14, 0.09, leather, 0, 0, -0.075);
+      box(W - 0.02, H - 0.03, 0.05, cream, -W / 2, 0, -0.027);
+      box(W - 0.02, H - 0.03, 0.05, cream, W / 2, 0, -0.027);
+
+      /* Base pages + turning leaves */
+      var baseL = new T.Mesh(new T.PlaneGeometry(W, H), new T.MeshBasicMaterial({ map: pageTex(SP[0].left, 'left', false) }));
+      baseL.position.set(-W / 2, 0, 0.004); rig.add(baseL);
+      var baseR = new T.Mesh(new T.PlaneGeometry(W, H), new T.MeshBasicMaterial({ map: pageTex(SP[last].right, 'right', false) }));
+      baseR.position.set(W / 2, 0, 0.004); rig.add(baseR);
+
+      var leaves = [], L = SP.length - 1;
+      function ss(v) { v = clamp(v, 0, 1); return v * v * (3 - 2 * v); }
+      for (var j = 0; j < L; j++) {
+        var geo = new T.PlaneGeometry(W, H, N, 1);
+        var fm = new T.MeshBasicMaterial({ map: pageTex(SP[j].right, 'right', false), side: T.FrontSide });
+        var bm = new T.MeshBasicMaterial({ map: pageTex(SP[j + 1].left, 'left', true), side: T.BackSide });
+        var a = new T.Mesh(geo, fm), b = new T.Mesh(geo, bm);
+        a.frustumCulled = false; b.frustumCulled = false;
+        rig.add(a); rig.add(b);
+        leaves.push({ p: 0, geo: geo, fm: fm, bm: bm });
+      }
+      function updateLeaf(j) {
+        var lf = leaves[j], p = lf.p, phi = p * Math.PI, seg = W / N, x = 0, z = 0;
+        var xs = [0], zs = [0], pos = lf.geo.attributes.position;
+        for (var i = 1; i <= N; i++) {
+          var sm = (i - 0.5) / N;
+          var ang = clamp(phi - 0.5 * Math.sin(2 * phi) * sm, 0, Math.PI);
+          x += seg * Math.cos(ang); z += seg * Math.sin(ang);
+          xs.push(x); zs.push(z);
+        }
+        var rz = 0.012 + (L - 1 - j) * 0.01, lz = 0.012 + j * 0.01;
+        var zoff = rz + (lz - rz) * ss((p - 0.35) / 0.3);
+        for (var r = 0; r < 2; r++) {
+          for (var c = 0; c <= N; c++) {
+            var idx = r * (N + 1) + c;
+            pos.setX(idx, xs[c]); pos.setZ(idx, zs[c] + zoff);
+          }
+        }
+        pos.needsUpdate = true;
+        var sh = 1 - 0.3 * Math.sin(phi);
+        lf.fm.color.setScalar(sh); lf.bm.color.setScalar(sh);
+        dirty = true;
+      }
+      for (var q = 0; q < L; q++) { updateLeaf(q); }
+
+      /* Gold dust + glow */
+      function radial(stops) {
+        var c = document.createElement('canvas'); c.width = c.height = 128;
+        var x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+        stops.forEach(function (s) { g.addColorStop(s[0], s[1]); });
+        x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+        return new T.CanvasTexture(c);
+      }
+      var glow = new T.Sprite(new T.SpriteMaterial({ map: radial([[0, 'rgba(237,208,158,0.55)'], [0.45, 'rgba(212,163,89,0.18)'], [1, 'rgba(212,163,89,0)']]), blending: T.AdditiveBlending, transparent: true, depthWrite: false }));
+      glow.scale.set(8, 6, 1); glow.position.set(0, 0, -1.8); scene.add(glow);
+
+      var PN = 150, pg = new T.BufferGeometry(), pp = new Float32Array(PN * 3), pv = new Float32Array(PN);
+      for (var i = 0; i < PN; i++) {
+        pp[i * 3] = (Math.random() - 0.5) * 9; pp[i * 3 + 1] = (Math.random() - 0.5) * 6.4; pp[i * 3 + 2] = (Math.random() - 0.5) * 5 - 0.5;
+        pv[i] = 0.08 + Math.random() * 0.22;
+      }
+      pg.setAttribute('position', new T.BufferAttribute(pp, 3));
+      var dust = new T.Points(pg, new T.PointsMaterial({ map: radial([[0, 'rgba(255,240,205,1)'], [0.4, 'rgba(237,208,158,0.5)'], [1, 'rgba(237,208,158,0)']]), size: 0.13, transparent: true, opacity: 0.85, depthWrite: false, blending: T.AdditiveBlending, sizeAttenuation: true }));
+      dust.frustumCulled = false; scene.add(dust);
+
+      function fit() {
+        var w = view.clientWidth || 300, h = view.clientHeight || 300;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.updateProjectionMatrix();
+        var t = Math.tan(camera.fov * Math.PI / 360);
+        var dW = (3.55 / camera.aspect) / (2 * t), dH = 2.95 / (2 * t);
+        camera.position.set(0, 0, Math.max(dW, dH));
+        camera.lookAt(0, 0, 0);
+        dirty = true;
+      }
+      fit();
+      if (window.ResizeObserver) { new ResizeObserver(fit).observe(view); } else { window.addEventListener('resize', fit); }
+
+      var vis = true;
+      new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }, { threshold: 0 }).observe(view);
+
+      var intro = reduce ? 1 : 0, mx = 0, my = 0, t0 = performance.now(), prevT = t0;
+      if (!reduce) { tween(1100, function (e) { intro = e; }); }
+
+      function frame(now) {
+        requestAnimationFrame(frame);
+        if (!vis) { prevT = now; return; }
+        if (reduce && !dirty) { return; }
+        var dt = Math.min((now - prevT) / 1000, 0.05); prevT = now;
+        var t = (now - t0) / 1000;
+        if (!reduce) {
+          mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
+          var sk = clamp((window.pageYOffset || 0) / 700, 0, 1);
+          rig.rotation.y = mx * 0.5 + (1 - intro) * 0.8 + sk * 0.35;
+          rig.rotation.x = -0.55 - my * 0.25 - sk * 0.1;
+          rig.rotation.z = Math.sin(t * 0.7) * 0.012;
+          rig.position.y = Math.sin(t * 1.1) * 0.035 - sk * 0.15;
+          var sc = 0.82 + 0.18 * intro; rig.scale.set(sc, sc, sc);
+          for (var i = 0; i < PN; i++) {
+            pp[i * 3 + 1] += pv[i] * dt;
+            pp[i * 3] += Math.sin(t * 0.6 + i) * 0.1 * dt;
+            if (pp[i * 3 + 1] > 3.3) { pp[i * 3 + 1] = -3.3; }
+          }
+          pg.attributes.position.needsUpdate = true;
+          dust.position.x = -mx * 0.35; dust.position.y = -my * 0.25;
+          glow.material.opacity = 0.8 + Math.sin(t * 0.9) * 0.12;
+        }
+        renderer.render(scene, camera);
+        dirty = false;
+      }
+      requestAnimationFrame(frame);
+
+      if (document.fonts) {
+        if (document.fonts.load) {
+          Promise.all([
+            document.fonts.load('600 50px "Playfair Display"'),
+            document.fonts.load('400 27px "Plus Jakarta Sans"'),
+            document.fonts.load('700 24px "Plus Jakarta Sans"')
+          ]).then(redraw, function () {});
+        }
+        if (document.fonts.ready) { document.fonts.ready.then(redraw); }
+      }
+
+      return {
+        setLeaf: function (j, p) { leaves[j].p = clamp(p, 0, 1); updateLeaf(j); }
+      };
+    }
+
+    try { api = build3D(); } catch (err) { api = null; if (window.console) { console.warn('Thesify 3D', err); } }
+    if (!api) { stage.classList.add('no-webgl'); }
+    ui();
+
+    if (!reduce) {
+      setTimeout(function () { if (!interacted && !busy && cur === 0) { next(); } }, 2600);
+    }
+  }, 'book');
+})();
+</script>
+
+</body>
+</html>
